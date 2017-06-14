@@ -1,3 +1,5 @@
 node_modules/
-build/bundle.js
+coverage/
+public/bundle.js
 .DS_Store
+.eslintcache
