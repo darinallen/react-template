@@ -7,10 +7,11 @@ module.exports = {
   devtool: 'cheap-eval-source-map', // inline all source maps into the bundled code, won't be included in production
   output: {
     path: path.join(__dirname, 'public'), // ensures the correct public directory regardless of where webpack is called from the project
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/public/'
   },
   devServer: {
-    hot: true, // Make it a hot server, needed for hot module replacement
+    hot: true, // Make it a hot server
     publicPath: '/public/', // let webpack know where the bundle will be served from
     historyApiFallback: true // 404s will fallback to index.html
   },
