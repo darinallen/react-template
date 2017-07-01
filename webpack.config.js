@@ -1,19 +1,19 @@
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
-  context: __dirname, // always run webpack from the root directory
   entry: './client/index.jsx', // the frontdoor to the project
   devtool: 'cheap-eval-source-map', // inline all source maps into the bundled code, won't be included in production
   output: {
     path: path.join(__dirname, 'public'), // ensures the correct public directory regardless of where webpack is called from the project
-    filename: 'bundle.js',
-    publicPath: '/public/'
+    filename: 'bundle.js'
   },
   devServer: {
-    hot: true, // Make it a hot server
-    publicPath: '/public/', // let webpack know where the bundle will be served from
-    historyApiFallback: true // 404s will fallback to index.html
+    historyApiFallback: true, // 404s will fallback to index.html
+    port: 8080,
+    proxy: {
+      '*': 'http://127.0.0.1:' + (process.env.PORT || 3000)
+    },
+    host: '127.0.0.1'
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.css']
@@ -22,10 +22,6 @@ module.exports = {
     colors: true,
     reasons: true // Gives more useful errors
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(), // Gives ability to make hot connectors
-    new webpack.NamedModulesPlugin() // Sends down names of modules being hot replaced
-  ],
   module: {
     rules: [
       {
@@ -41,6 +37,10 @@ module.exports = {
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader'
+      },
+      {
+        test: /\.png$/,
+        loader: 'url-loader?mimetype=image/png'
       }
     ]
   }

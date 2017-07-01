@@ -4,6 +4,7 @@
     "dev": "webpack-dev-server",
     "format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"client/**/*.{js,jsx}\"",
     "lint": "eslint **/*.{js,jsx} --quiet",
+    "start": "nodemon server/server.js",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:update": "jest -u"
@@ -19,14 +20,22 @@
   },
   "dependencies": {
     "axios": "0.16.1",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.3",
     "enzyme": "^2.8.2",
     "express": "4.15.3",
+    "morgan": "^1.8.2",
+    "path": "^0.12.7",
+    "prop-types": "^15.5.10",
     "react": "15.5.4",
+    "react-bootstrap": "^0.31.0",
     "react-dom": "15.5.4",
     "react-router": "^4.1.1",
+    "react-router-bootstrap": "^0.24.2",
     "react-router-dom": "4.1.1",
     "react-test-renderer": "^15.5.4",
-    "webpack": "2.6.1"
+    "url-loader": "^0.5.9",
+    "webpack": "^3.0.0"
   },
   "devDependencies": {
     "babel-core": "6.24.1",
@@ -53,7 +62,7 @@
     "nodemon": "1.11.0",
     "prettier": "1.3.1",
     "style-loader": "^0.18.2",
-    "webpack-dev-server": "2.4.5"
+    "webpack-dev-server": "^2.5.0"
   },
   "name": "react-template",
   "version": "1.0.0",
