@@ -11,7 +11,7 @@ module.exports = {
     historyApiFallback: true, // 404s will fallback to index.html
     port: 8080,
     proxy: {
-      '*': 'http://127.0.0.1:' + (process.env.PORT || 3000)
+      '*': 'http://127.0.0.1:' + (process.env.PORT || 8081)
     },
     host: '127.0.0.1'
   },
@@ -32,7 +32,8 @@ module.exports = {
       },
       {
         test: /\.jsx?$/, // run anything that ends in .js or .jsx
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
